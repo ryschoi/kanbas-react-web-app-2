@@ -22,9 +22,9 @@ export default function AssignmentsRoutes(app) {
         res.send(newAssignment);
     });
 
-    app.get("/api/assignments/:assignmentId/assignments", (req, res) => {
-        const { assignmentId } = req.params;
-        const assignments = assignmentsDao.findAssignments(assignmentId);
+    app.get("/api/courses/:cid/assignments", (req, res) => {
+        const { cid } = req.params;
+        const assignments = assignmentsDao.findAssignment(cid);
         res.json(assignments);
     });
 }

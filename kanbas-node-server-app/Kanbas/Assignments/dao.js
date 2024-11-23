@@ -5,14 +5,15 @@ export function deleteAssignment(assignmentId) {
 }
 
 export function createAssignment(assignment) {
-  const newassignment = { ...assignment, _id: Date.now().toString() };
+  const { assignments } = Database;
+  const newAssignment = { ...assignment, _id: Date.now().toString() };
   Database.assignments = [...Database.assignments, newassignment];
-  return newassignment;
+  return newAssignment;
 }
 
-export function findAssignments(assignmentId) {
+export function findAssignment(courseId) {
   const { assignments } = Database;
-  return assignments.filter((assignment) => assignment._id === assignmentId);
+  return assignments.filter((assignment) => assignment.course === courseId);
 }
 
 export function updateAssignment(assignmentId, assignmentUpdates) {
