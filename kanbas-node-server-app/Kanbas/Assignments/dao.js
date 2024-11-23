@@ -1,4 +1,5 @@
-import Database from "../Database/index.js";
+import * as Database from "../database/index.js";
+const { assignments } = Database.assignments;
 export function deleteAssignment(assignmentId) {
   const { assignments } = Database;
   Database.assignments = assignments.filter((assignment) => assignment._id !== assignmentId);

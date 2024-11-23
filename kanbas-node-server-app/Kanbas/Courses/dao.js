@@ -1,4 +1,5 @@
-import Database from "../Database/index.js";
+import * as Database from "../database/index.js";
+const { courses } = Database.courses;
 export function deleteCourse(courseId) {
   const { courses, enrollments } = Database;
   Database.courses = courses.filter((course) => course._id !== courseId);

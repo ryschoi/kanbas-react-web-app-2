@@ -5,11 +5,12 @@ import { FaPlus } from "react-icons/fa6";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { Link, useParams, useLocation } from "react-router-dom";
 import LessonControlButtons from "../Modules/LessonControlButtons";
-
+import * as coursesClient from "./client";
+import * as modulesClient from "./client";
+import * as assignmentsClient from "./client";
 import * as db from "../../Database";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
-/* import { useParams } from "react-router"; */
 import { addAssignment, deleteAssignment, updateAssignment }
   from "./reducer";
 
@@ -18,10 +19,34 @@ export default function Assignments() {
   const assignments = db.assignments;
   const links = [
     { path: `/Kanbas/Courses/${cid}/Assignments/${cid}` },];
-
   const [assignmentName, setAssignmentName] = useState("");
-  // const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const dispatch = useDispatch();
+
+  const saveAssignment = async (assignment: any) => {
+    await assignmentsClient.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
+  const removeAssignment = async (assignmentId: string) => {
+    await assignmentsClient.deleteAssignment(assignmentId);
+    dispatch(deleteAssignment(assignmentId));
+  };
+
+  const createAssignment = async () => {
+    if (!cid) return;
+    const newAssignment = { name: assignmentName, course: cid };
+    const module = await assignmentsClient.createAssignment(cid, newAssignment);
+    dispatch(addAssignment(module));
+  };
+
+  // const fetchAssignments = async () => {
+  //   const assignments = await coursesClient.fetchAssignment(assignmentId as string);
+  //   dispatch(setAssignment(assignments));
+  // };
+
+  // useEffect(() => {
+  //   fetchModules();
+  // }, []);
 
   return (
     <div id="wd-assignments">
