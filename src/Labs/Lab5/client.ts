@@ -1,11 +1,10 @@
 import axios from "axios";
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+
 export const fetchWelcomeMessage = async () => {
-  console.log(REMOTE_SERVER);
   const response = await axios.get(`${REMOTE_SERVER}/lab5/welcome`);
   return response.data;
 };
-
 const ASSIGNMENT_API = `${REMOTE_SERVER}/lab5/assignment`;
 export const fetchAssignment = async () => {
   const response = await axios.get(`${ASSIGNMENT_API}`);
@@ -32,20 +31,15 @@ export const createTodo = async () => {
   const response = await axios.get(`${TODOS_API}/create`);
   return response.data;
 };
-
 export const postTodo = async (todo: any) => {
   const response = await axios.post(`${TODOS_API}`, todo);
   return response.data;
 };
-
 export const deleteTodo = async (todo: any) => {
   const response = await axios.delete(`${TODOS_API}/${todo.id}`);
   return response.data;
 };
-
 export const updateTodo = async (todo: any) => {
   const response = await axios.put(`${TODOS_API}/${todo.id}`, todo);
   return response.data;
 };
-
-
