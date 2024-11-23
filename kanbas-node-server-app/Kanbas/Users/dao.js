@@ -1,5 +1,5 @@
-import db from "../Database/index.js";
-let { users } = db;
+import Database from "../Database/index.js";
+const { users } = Database;
 export const createUser = (user) => {
     const newUser = { ...user, _id: Date.now().toString() };
     users = [...users, newUser];
