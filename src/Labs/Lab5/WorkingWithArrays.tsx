@@ -56,9 +56,8 @@ export default function WorkingWithArrays() {
             <h3>Updating Todo Completion</h3>
             <a href={`${API}/${todo.id}/completed/${todo.completed}`} className="btn btn-primary float-end">
                 Update Completion Status</a>
-            <input type="checkbox" className="form-control w-25 float-start me-2" 
-                onChange={(e) => setTodo({ ...todo, id: e.target.value })} />
-                {/* ${{todo.completed} === true ? "checked" : ""} */}
+            <input type="checkbox" className="form-control w-25 float-start me-2"
+                defaultChecked={todo.completed} onChange={(e) => setTodo({ ...todo, id: e.target.value })} />
             <br /><br /><hr />
 
             <h3>Updating Todo Description</h3>
