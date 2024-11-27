@@ -7,7 +7,7 @@ import WorkingWithObjectsAsynchronously from "./WorkingWithObjectsAsynchronously
 import WorkingWithArraysAsynchronously from "./WorkingWithArraysAsynchronously";
 import QueryParameters from "./QueryParameters";
 
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER || "http://localhost:4000";
 
 export default function Lab5() {
   return (

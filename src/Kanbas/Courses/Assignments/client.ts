@@ -1,5 +1,5 @@
 import axios from "axios";
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER || "http://localhost:4000";
 
 export const updateAssignment= async (assignment: any) => {
   const { data } = await axios.put(`${ASSIGNMENT_API}/${assignment._id}`, assignment);
