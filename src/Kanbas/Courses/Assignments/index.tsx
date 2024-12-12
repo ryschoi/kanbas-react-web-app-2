@@ -9,7 +9,7 @@ import * as coursesClient from "../client";
 import * as db from "../../Database";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
-import { addAssignment, deleteAssignment, updateAssignment }
+import { addAssignment, deleteAssignment, updateAssignment, setAssignment }
   from "./reducer";
 import AssignmentDelete from "./AssignmentDelete";
 import LessonControlButtons from "../Modules/LessonControlButtons";
@@ -24,19 +24,10 @@ export default function Assignments() {
     { path: `/Kanbas/Courses/${cid}/Assignments/${cid}` },];
   const [assignmentName, setAssignmentName] = useState("");
 
-  /*
-  const fetchAssignments = async () => {
-    const assignments = await coursesClient.findAssignmentsForCourse(cid as string);
-    dispatch(setAssignments(assignments));
-  };
-  useEffect(() => {
-    fetchAssignments();
-  }, []);
-  */
-
 
   return (
     <div id="wd-assignments">
+      {/* TOP BUTTONS/ACTIONS */}
       <CiSearch className="search-icon" style={{ height: '50px', marginRight: '5px' }} />
       <input id="wd-search-assignment" placeholder="Search" style={{ borderRadius: '10px', padding: '2px', paddingLeft: '7px' }} />
 
@@ -47,9 +38,9 @@ export default function Assignments() {
 
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
         <FaPlus className="position-relative me-2" />
-        Group </button><br /><br />
+        Group </button>
 
-
+      {/* ASSIGNMENT BAR */}
       <div className="wd-title p-3 ps-2 bg-secondary" id="assignments-heading">
         <div>
           <BsGripVertical className="me-2 fs-3" />
@@ -61,9 +52,10 @@ export default function Assignments() {
         </div>
       </div>
 
+      {/* ASSIGNMENTS FOR CURRENT COURSE */}
       <ul id="wd-assignment-list" className="list-group rounded-0">
         {assignments
-          .filter((assignment: any) => assignment.course === cid)
+          .filter((assign: any) => assign.course === cid)
           .map((assignment: any) => (
             <li className="wd-assignment-list-item d-flex align-items-center list-group-item p-3 ps-1">
               <BsGripVertical className="me-2 fs-3" />
