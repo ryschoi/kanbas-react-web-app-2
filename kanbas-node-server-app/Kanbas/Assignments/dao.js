@@ -12,7 +12,7 @@ export function createAssignment(assignment) {
   return newAssignment;
 }
 
-export function findAssignment(courseId) {
+export function findAssignmentsForCourse(courseId) {
   const { assignments } = Database;
   return assignments.filter((assignment) => assignment.course === courseId);
 }

@@ -58,6 +58,18 @@ body * {
   font-size: 11pt;
 }
 
+#wd-signin-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#wd-signup-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 #wd-dashboard-published {
   font-size: 18pt;
   color: dimgrey;
