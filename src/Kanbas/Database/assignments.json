@@ -1,6 +1,8 @@
 [
     {
-        "_id": "RS101",
+        "course": "RS101",
+        "description": "Learn HTML",
+        "_id": "A1",
         "name": "A1 - ENV + HTML",
         "available": "2024-05-06",
         "due": "2024-05-13",
@@ -12,7 +14,9 @@
         "entry": "text entry"
     },
     {
-        "id": "RS101",
+        "course": "RS101",
+        "description": "Learn CSS and bootstrap",
+        "_id": "A2",
         "name": "A2 - CSS + BOOTSTRAP",
         "available": "2024-05-13",
         "due": "2024-05-20",
@@ -23,7 +27,9 @@
         "submission": "paper"
     },
     {
-        "id": "RS101",
+        "course": "RS101",
+        "description": "Learn javascript and react",
+        "_id": "A3",
         "name": "A3 - JAVASCRIPT + REACT",
         "available": "2024-05-20",
         "due": "2024-05-27",
@@ -35,7 +41,9 @@
         "entry": "text entry"
     },
     {
-        "id": "RS102",
+        "course": "RS101",
+        "description": "Design a poster",
+        "_id": "A4",
         "name": "A1 - DESIGN POSTER",
         "available": "2024-05-20",
         "due": "2024-05-27",
