@@ -1,5 +1,7 @@
 import axios from "axios";
 const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER || "http://localhost:4000";
+const ASSIGNMENT_API = `${REMOTE_SERVER}/api/assignments`;
+const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 
 export const updateAssignment= async (assignment: any) => {
   const { data } = await axios.put(`${ASSIGNMENT_API}/${assignment._id}`, assignment);
@@ -11,16 +13,13 @@ export const deleteAssignment = async (assignmentId: string) => {
   return response.data;
  };
 
-const ASSIGNMENT_API = `${REMOTE_SERVER}/lab5/assignment`;
 export const fetchAssignment = async () => {
   const response = await axios.get(`${ASSIGNMENT_API}`);
   return response.data;
 };
 
-export const createAssignment = async (assignmentId: string, module: any) => {
-  const response = await axios.post(
-      `${ASSIGNMENT_API}/${assignmentId}/modules`,
-      module
-  );
-  return response.data;
+export const createAssignment = async (courseId: string, assignment: any) => {
+    const response = await axios.post(
+        `${COURSES_API}/${courseId}/assignments`, assignment);
+    return response.data;
 };

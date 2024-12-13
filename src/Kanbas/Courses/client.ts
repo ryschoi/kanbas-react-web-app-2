@@ -31,12 +31,12 @@ export const findModulesForCourse = async (courseId: string) => {
 
 export const createAssignment = async (courseId: string, assignment: any) => {
     const response = await axios.post(
-      `${COURSES_API}/${courseId}/assignments`, assignment);
+        `${COURSES_API}/${courseId}/assignments`, assignment);
     return response.data;
-  };
-  
-  export const findAssignmentsForCourse = async (courseId: string) => {
+};
+
+export const findAssignmentsForCourse = async (courseId: string) => {
     const response = await axios
-      .get(`${COURSES_API}/${courseId}/assignments`);
+        .get(`${COURSES_API}/${courseId}/assignments`);
     return response.data;
-  };
+};

@@ -14,7 +14,7 @@ export default function AssignmentEditor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const newAssignment = assignments.find((assignment: any) => assignment._id == aid) || {
+  const newAssignment = assignments.find((newAssignment: any) => newAssignment._id == aid) || {
     name: "",
     description: "",
     points: 0,
@@ -27,14 +27,15 @@ export default function AssignmentEditor() {
   const [currentAssignment, setCurrentAssignment] = useState(newAssignment);
   const editing = assignments.findIndex((a: any) => a._id === aid) !== -1;
 
-  const saveCurAssignment = () => {
+  const saveCurAssignment = async () => {
     if (editing) {
-      dispatch(updateAssignment({ ...newAssignment, _id: aid }));
-    } else {
-      dispatch(addAssignment(newAssignment));
+      await assignmentsClient.updateAssignment(currentAssignment);
     }
-    navigate(`/Kanbas/Courses/${cid}/Assignments`);
-  };
+    else {
+      await coursesClient.createAssignment(cid || "", currentAssignment);
+    }
+    navigate(`/Kanbas/Courses/${currentAssignment.course}/Assignments`);
+  }
 
   return (
     <div id="wd-assignments-editor">
@@ -177,8 +178,10 @@ export default function AssignmentEditor() {
         </table>
         <hr />
         <div id="bottom-buttons-group">
-          <Link to={`/Kanbas/Courses/${cid}/Assignments`}><button className="bottom-buttons" id="cancel-bt">Cancel</button></Link>
-          <Link to={`/Kanbas/Courses/${cid}/Assignments`}><button className="bottom-buttons" id="save-bt" onClick={saveCurAssignment}>Save</button></Link>
+          {/* <Link to={`/Kanbas/Courses/${cid}/Assignments`}><button className="bottom-buttons" id="cancel-bt">Cancel</button></Link> */}
+          <button className="bottom-buttons" id="save-bt" onClick={saveCurAssignment}>Save</button>
+          <Link to={`/Kanbas/Courses/${currentAssignment.course}/Assignments`}><button className="bottom-buttons" id="cancel-bt">Cancel</button>
+          </Link>
         </div>
       </div>
     </div >

@@ -33,12 +33,14 @@ export default function Assignments() {
 
       <Link to="./Editor">
         <button id="wd-add-module-btn" className="btn btn-lg btn-danger me-1 float-end">
-          <FaPlus className="position-relative me-2" /> Assignments </button>
+          <FaPlus className="position-relative me-2" style={{ fontWeight: 'bolder' }} /> Assignments </button>
       </Link>
 
       <button id="wd-add-module-btn" className="btn btn-lg btn-secondary me-1 float-end">
         <FaPlus className="position-relative me-2" />
         Group </button>
+
+      <br /> <br />
 
       {/* ASSIGNMENT BAR */}
       <div className="wd-title p-3 ps-2 bg-secondary" id="assignments-heading">
