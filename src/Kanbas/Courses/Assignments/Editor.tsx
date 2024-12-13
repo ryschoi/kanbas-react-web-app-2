@@ -177,8 +177,8 @@ export default function AssignmentEditor() {
         </table>
         <hr />
         <div id="bottom-buttons-group">
-          <Link to="../Assignments"><button className="bottom-buttons" id="cancel-bt">Cancel</button></Link>
-          <Link to="../Assignments"><button className="bottom-buttons" id="save-bt" onClick={saveCurAssignment}>Save</button></Link>
+          <Link to={`/Kanbas/Courses/${cid}/Assignments`}><button className="bottom-buttons" id="cancel-bt">Cancel</button></Link>
+          <Link to={`/Kanbas/Courses/${cid}/Assignments`}><button className="bottom-buttons" id="save-bt" onClick={saveCurAssignment}>Save</button></Link>
         </div>
       </div>
     </div >

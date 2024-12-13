@@ -32,7 +32,7 @@ const modulesSlice = createSlice({
         },
         setModule: (state, action) => {
             state.modules = action.payload;
-          }
+        }
     },
 });
 export const { addModule, deleteModule, updateModule, editModule, setModule } =
