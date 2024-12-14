@@ -6,9 +6,6 @@ import { IoHome } from "react-icons/io5";
 import { SiSimpleanalytics } from "react-icons/si";
 import { TfiAnnouncement } from "react-icons/tfi";
 
-
-
-
 export default function CourseStatus() {
   return (
     <div id="wd-course-status">

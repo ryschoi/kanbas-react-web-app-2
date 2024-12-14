@@ -18,12 +18,11 @@ export default function WorkingWithArraysAsynchronously() {
   const updateTodo = async (todo: any) => {
     try {
       await client.updateTodo(todo);
-      setTodos(todos.map((t) => (t.id === todo.id ? todo : t)));
+      setTodos(todos.map((e) => (e.id === todo.id ? todo : e)));
     }
     catch (error: any) {
       setErrorMessage(error.response.data.message);
     }
-
   };
 
   const createTodo = async () => {
@@ -76,8 +75,8 @@ export default function WorkingWithArraysAsynchronously() {
             <FaPencil onClick={() => editTodo(todo)} className="text-primary float-end me-2 mt-1" />
             <FaTrash onClick={() => removeTodo(todo)} className="text-danger float-end mt-1" id="wd-remove-todo" />
             <TiDelete onClick={() => deleteTodo(todo)} className="text-danger float-end me-2 fs-3" id="wd-delete-todo" />
-            <input type="checkbox" className="form-check-input me-2 float-start" defaultChecked={todo.completed} 
-            onChange={(e) => updateTodo({ ...todo, completed: e.target.checked })} />
+            <input type="checkbox" className="form-check-input me-2 float-start" defaultChecked={todo.completed}
+              onChange={(e) => updateTodo({ ...todo, completed: e.target.checked })} />
             {!todo.editing ? (todo.title) : (
               <input className="form-control w-50 float-start" defaultValue={todo.title}
                 onKeyDown={(e) => {

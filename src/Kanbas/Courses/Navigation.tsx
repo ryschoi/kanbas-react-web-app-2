@@ -19,8 +19,8 @@ export default function CoursesNavigation() {
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0" style={{ width: 120 }}>
       {links.map((link) => (
-        <Link key={link.path} to={link.path} className={`list-group-item border-0
-              ${pathname.includes(link.label) ? "text-danger bg-white active border" : "text-danger bg-white"}`}>
+        <Link key={link.path} to={link.path} className={`list-group-item border-0 list-group-item-action'
+          ${pathname.includes(link.label) ? "text-black bg-white active border" : "text-danger bg-white"}`}>
           <br />
           {link.label}
         </Link>
