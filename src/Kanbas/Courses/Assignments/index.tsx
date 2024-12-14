@@ -14,11 +14,10 @@ import { addAssignment, deleteAssignment, updateAssignment, setAssignment }
 import AssignmentDelete from "./AssignmentDelete";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 
-export default function Assignments() {
+export default function Assignments({ currentUser, }: { currentUser: any; }) {
   const { cid } = useParams();
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   const links = [
     { path: `/Kanbas/Courses/${cid}/Assignments/${cid}` },];

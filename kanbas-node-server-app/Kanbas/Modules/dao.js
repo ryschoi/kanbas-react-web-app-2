@@ -1,5 +1,6 @@
 import * as Database from "../database/index.js";
 const { modules } = Database.modules;
+
 export function deleteModule(moduleId) {
   const { modules } = Database;
   Database.modules = modules.filter((module) => module._id !== moduleId);

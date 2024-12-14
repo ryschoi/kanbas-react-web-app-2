@@ -23,12 +23,12 @@ export default function KanbasNavigation() {
         className="list-group-item bg-black border-0 text-center">
         <img src="/images/NEU.png" width="75px" /></a>
       
-      {/* <Link to="/Kanbas/Account" className={`list-group-item text-center border-0 bg-black
+      <Link to="/Kanbas/Account" className={`list-group-item text-center border-0 bg-black
             ${pathname.includes("Account") ? "bg-white text-danger" : "bg-black text-white"}`}>
         <FaRegCircleUser className={`fs-1 ${pathname.includes("Account") ? "text-danger" : "text-white"}`} />
         <br />
         Account
-      </Link> */}
+      </Link>
 
       {/* Mapping the nav bar link styles */}
       {links.map((link) => (
