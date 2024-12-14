@@ -7,7 +7,6 @@ import React, { useState, useEffect } from "react";
 import * as coursesClient from "../client";
 import * as modulesClient from "./client";
 import { useParams } from "react-router";
-import * as db from "../../Database";
 import { addModule, editModule, updateModule, deleteModule, setModules }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
@@ -35,14 +34,13 @@ export default function Modules({ currentUser, }: { currentUser: any; }) {
     dispatch(addModule(module));
   };
 
-  const fetchModules = async () => {
-    const modules = await coursesClient.findModulesForCourse(cid as string);
-    dispatch(setModules(modules));
-  };
-
   useEffect(() => {
+    const fetchModules = async () => {
+      const modules = await coursesClient.findModulesForCourse(cid as string);
+      dispatch(setModules(modules));
+    };
     fetchModules();
-  });
+  }, []);
 
   return (
     <div className="wd-modules">

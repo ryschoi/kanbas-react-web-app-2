@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER || "http://localhost:4000";
 
 export default function WorkingWithArrays() {
     const API = `${REMOTE_SERVER}/lab5/todos`;

@@ -4,9 +4,6 @@ import { CiSearch } from "react-icons/ci";
 import { FaPlus, FaTrash } from "react-icons/fa6";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { Link, useParams, useLocation } from "react-router-dom";
-import * as assignmentsClient from "./client";
-import * as coursesClient from "../client";
-import * as db from "../../Database";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { addAssignment, deleteAssignment, updateAssignment, setAssignment }
@@ -22,7 +19,6 @@ export default function Assignments({ currentUser, }: { currentUser: any; }) {
   const links = [
     { path: `/Kanbas/Courses/${cid}/Assignments/${cid}` },];
   const [assignmentName, setAssignmentName] = useState("");
-
 
   return (
     <div id="wd-assignments">

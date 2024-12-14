@@ -2,19 +2,22 @@ import * as dao from "./dao.js";
 import * as courseDao from "../Courses/dao.js";
 import * as enrollmentsDao from "../Enrollments/dao.js";
 
-let currentUser = null;
 export default function UserRoutes(app) {
-    const createCourse = (req, res) => {
-        const currentUser = req.session["currentUser"];
-        const newCourse = courseDao.createCourse(req.body);
-        enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
-        res.json(newCourse);
-    };
-    app.post("/api/users/current/courses", createCourse);
     const createUser = (req, res) => { };
     const deleteUser = (req, res) => { };
-    const findAllUsers = (req, res) => { };
-    const findUserById = (req, res) => { };
+    const findAllUsers = (req, res) => { 
+        const allUsers = dao.findAllUsers()
+        res.json(allUsers);
+    };
+    app.get("/api/users", findAllUsers);
+
+    const findUserById = (req, res) => {
+        const { userID } = req.params
+        const user = dao.findUserById(userID)
+        res.json(user)
+    };
+    app.get("/api/users/:userId", findUserById);
+
     const updateUser = (req, res) => {
         const userId = req.params.userId;
         const userUpdates = req.body;
@@ -33,7 +36,6 @@ export default function UserRoutes(app) {
         const currentUser = dao.createUser(req.body);
         req.session["currentUser"] = currentUser;
         res.json(currentUser);
-
     };
     const signin = (req, res) => {
         const { username, password } = req.body;
@@ -44,6 +46,7 @@ export default function UserRoutes(app) {
         } else {
             res.status(401).json({ message: "Unable to login. Try again later." });
         }
+
     };
     const signout = (req, res) => {
         req.session.destroy();
@@ -55,6 +58,7 @@ export default function UserRoutes(app) {
             res.sendStatus(401);
             return;
         }
+
         res.json(currentUser);
     };
     const findCoursesForEnrolledUser = (req, res) => {
@@ -70,15 +74,20 @@ export default function UserRoutes(app) {
         const courses = courseDao.findCoursesForEnrolledUser(userId);
         res.json(courses);
     };
-    app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
+    const createCourse = (req, res) => {
+        const currentUser = req.session["currentUser"];
+        const newCourse = courseDao.createCourse(req.body);
+        enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
+        res.json(newCourse);
+    };
+
     app.post("/api/users", createUser);
-    app.get("/api/users", findAllUsers);
-    app.get("/api/users/:userId", findUserById);
     app.put("/api/users/:userId", updateUser);
     app.delete("/api/users/:userId", deleteUser);
     app.post("/api/users/signup", signup);
     app.post("/api/users/signin", signin);
     app.post("/api/users/signout", signout);
     app.post("/api/users/profile", profile);
+    app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
+    app.post("/api/users/current/courses", createCourse);
 }
-
