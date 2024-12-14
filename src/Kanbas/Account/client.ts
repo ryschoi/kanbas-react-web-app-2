@@ -34,4 +34,10 @@ export const createCourse = async (course: any) => {
   return data;
 };
 
+export const findAllUsers = async () => {
+  const response = await axiosWithCredentials.get(USERS_API);
+  return response.data;
+};
+
+
 
